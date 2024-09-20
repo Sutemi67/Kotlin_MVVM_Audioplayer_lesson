@@ -1,12 +1,20 @@
 package com.example.mvvm_audioplayer
 
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 
-class MainActivity : AppCompatActivity() {
+class TrackActivity : ComponentActivity() {
+    private lateinit var viewModel: TrackViewModel
+
+    init {
+        Log.d("TEST", "init!")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +24,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        viewModel = ViewModelProvider(this)[TrackViewModel::class.java]
     }
 }
